@@ -1,0 +1,5 @@
+﻿{
+  "BrowserType": "Chrome",
+  "RunMaximised": true,
+  "Headless": false
+}

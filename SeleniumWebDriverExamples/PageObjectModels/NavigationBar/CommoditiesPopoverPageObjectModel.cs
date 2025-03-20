@@ -51,7 +51,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels.NavigationBar
             return new CrudeOilPageObjectModel(this.TestParticipant);
         }
 
-        public void WaitForAllCommodiites()
+        public void WaitForAllCommodities()
         {
             foreach (var button in _allButtons)
             {

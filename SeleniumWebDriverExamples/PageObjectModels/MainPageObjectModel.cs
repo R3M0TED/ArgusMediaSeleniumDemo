@@ -3,7 +3,7 @@ using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels
 {
-    sealed class MainPageObjectModel : BasePageObjectModel
+    internal class MainPageObjectModel : BasePageObjectModel
     {
         public NavBarPageObjectModel NavBarPageObjectModel { get; set; }
         public CookiesPopupPageObjectModel CookiesPopupPageObjectModel { get; set; }

@@ -5,7 +5,7 @@ using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels
 {
-    public class BasePageObjectModel
+    internal class BasePageObjectModel
     {
         protected TestParticipant TestParticipant {  get; set; }
 

@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriverExamples.Runtime;
+﻿using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels.Commodities
 {

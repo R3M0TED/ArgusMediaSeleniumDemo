@@ -1,9 +1,7 @@
-﻿using NUnit.Framework;
-
-[assembly: Parallelizable(ParallelScope.Fixtures)]
+﻿[assembly: Parallelizable(ParallelScope.All)]
 
 #if DEBUG
-[assembly: LevelOfParallelism(2)] 
+[assembly: LevelOfParallelism(4)] 
 #else
 [assembly: LevelOfParallelism(4)]
 #endif

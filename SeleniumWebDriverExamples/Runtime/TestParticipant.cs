@@ -6,9 +6,12 @@ namespace SeleniumWebDriverExamples.Runtime
     {
         public readonly IWebDriver Driver;
 
-        public TestParticipant(IWebDriver driver)
+        public readonly int Id;
+
+        public TestParticipant(IWebDriver driver, int id)
         {
-            Driver = driver;
+            this.Driver = driver;
+            this.Id = id;
         }
     }
 

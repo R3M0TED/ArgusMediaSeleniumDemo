@@ -1,20 +1,23 @@
 ﻿using SeleniumWebDriverExamples.PageObjectModels;
-using SeleniumWebDriverExamples.Tests;
 
 namespace SeleniumWebDriverExamples.Runtime
 {
     sealed class TestStateProvider : ITestStateProvider, IDisposable
     {
-        IList<TestParticipant> activeParticipants;
-        public TestStateProvider()
+        private IList<TestParticipant> _activeParticipants;
+
+        private TestConfiguration _testConfiguration;
+
+        public TestStateProvider(TestConfiguration testConfiguration)
         {
-            activeParticipants = new List<TestParticipant>();
+            _activeParticipants = new List<TestParticipant>();
+            this._testConfiguration = testConfiguration;
         }
 
-        public MainPageObjectModel GetTestParticipant()
+        public MainPageObjectModel CreateTestParticipant()
         {
-            var participant = TestParticipantFactory.CreateTestParticipant(TestSetupFixture.Configuration!);
-            activeParticipants.Add(participant);
+            var participant = TestParticipantFactory.CreateTestParticipant(_testConfiguration, _activeParticipants.Count);
+            _activeParticipants.Add(participant);
 
             GoToUrl(participant);
             var mainPageObjectModel = new MainPageObjectModel(participant);
@@ -23,9 +26,14 @@ namespace SeleniumWebDriverExamples.Runtime
             return mainPageObjectModel;
         }
 
+        public IList<TestParticipant> GetActiveParticipants()
+        {
+            return this._activeParticipants;
+        }
+
         public void Dispose()
         {
-            foreach (var participant in activeParticipants)
+            foreach (var participant in _activeParticipants)
             {
                 participant.Driver.Quit();
                 participant.Driver.Dispose();

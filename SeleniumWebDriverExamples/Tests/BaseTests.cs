@@ -6,14 +6,20 @@ namespace SeleniumWebDriverExamples.Tests
     {
         public static void RunTest(Action<ITestStateProvider> testLogic)
         {
-            var testStateProvider = new TestStateProvider();
+            var testConfiguration = TestSetupFixture.Configuration;
+            var testStateProvider = new TestStateProvider(testConfiguration);
             try
             {
                 testLogic(testStateProvider);
             }
-            catch(Exception ex)
+            catch
             {
-                Assert.Fail(ex.Message);
+                if (testConfiguration.SaveFailureScreenshots)
+                {
+                    ScreenshotUtilities.TakeFailureScreenshots(testStateProvider.GetActiveParticipants(), testConfiguration.ScreenshotPath);
+                }
+
+                throw;
             }
             finally
             {

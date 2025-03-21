@@ -2,8 +2,9 @@
 public class TestConfiguration
 {
     public string BrowserType { get; set; }
-    public bool RunMaximised { get; set; }
     public bool Headless { get; set; }
+    public bool SaveFailureScreenshots { get; set; }
+    public string ScreenshotPath { get; set; } = string.Empty;
 
     private static IConfiguration _configuration;
 
@@ -18,8 +19,32 @@ public class TestConfiguration
 
     public TestConfiguration()
     {
-        BrowserType = _configuration["BrowserType"] ?? "Chrome";
-        RunMaximised = bool.TryParse(_configuration["RunMaximised"], out bool runMaximised) && runMaximised;
-        Headless = bool.TryParse(_configuration["Headless"], out bool headless) && headless; 
+        BrowserType = GetRequiredConfiguration("BrowserType");
+
+        try
+        {
+            Headless = ParseBoolConfig("Headless");
+            SaveFailureScreenshots = ParseBoolConfig("SaveFailureScreenshots");
+        }
+        catch (FormatException ex)
+        {
+            throw new ArgumentException("One or more configuration values are invalid.", ex);
+        }
+    }
+
+    private string GetRequiredConfiguration(string key)
+    {
+        var value = _configuration[key];
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException($"{key} is required in the configuration.");
+        }
+        return value;
+    }
+
+    private bool ParseBoolConfig(string key)
+    {
+        var value = GetRequiredConfiguration(key);
+        return bool.Parse(value);
     }
 }

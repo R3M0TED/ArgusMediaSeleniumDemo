@@ -7,9 +7,9 @@
         {
             RunTest(sp =>
             {
-                var mainPage = sp.GetTestParticipant();
+                var mainPage = sp.CreateTestParticipant();
                 var commmoditiesPopover = mainPage.NavBarPageObjectModel.ClickCommodities();
-                Assert.That(() => commmoditiesPopover.WaitForAllCommodities(), Throws.Nothing);
+                Assert.That(() => commmoditiesPopover.WaitForAllCommoditiesToBeDisplayed(), Throws.Nothing);
             });
         }
 
@@ -18,86 +18,9 @@
         {
             RunTest(sp =>
             {
-                var mainPage = sp.GetTestParticipant();
+                var mainPage = sp.CreateTestParticipant();
                 var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArticlseShowsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArticleSshowsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArticleShodwsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArticleShowsAfrticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingFaorArticleShowsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArticaleShowsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
-            });
-        }
-
-        [Test]
-        public void SearchingForArtiscleShowsArticle()
-        {
-            RunTest(sp =>
-            {
-                var mainPage = sp.GetTestParticipant();
-                var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
+                Assert.That(() => searchResultsPopover.WaitForSearchResults(), Throws.Nothing);
             });
         }
     }

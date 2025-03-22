@@ -1,14 +1,19 @@
-﻿namespace SeleniumWebDriverExamples.Tests
+﻿using SeleniumWebDriverExamples.Runtime;
+
+namespace SeleniumWebDriverExamples.Tests
 {
     [SetUpFixture]
     public class TestSetupFixture
     {
-        public static TestConfiguration? Configuration { get; private set; }
+        public static TestConfiguration Configuration { get; private set; } = new TestConfiguration();
 
         [OneTimeSetUp]
-        public static void GlobalSetup()
+        public static void OneTimeSetUp()
         {
-            Configuration = new TestConfiguration();
+            if (Configuration.SaveFailureScreenshots)
+            {
+                Configuration.ScreenshotPath = ScreenshotUtilities.GetScreenshotFolderPath();
+            }
         }
     }
 }

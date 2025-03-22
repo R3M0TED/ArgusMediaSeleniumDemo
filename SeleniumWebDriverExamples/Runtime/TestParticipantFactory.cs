@@ -2,9 +2,9 @@
 {
     internal class TestParticipantFactory
     {
-        public static TestParticipant CreateTestParticipant(TestConfiguration testConfiguration)
+        public static TestParticipant CreateTestParticipant(TestConfiguration testConfiguration, int id)
         {
-            return new TestParticipant(WebDriverFactory.CreateWebDriver(testConfiguration));
+            return new TestParticipant(WebDriverFactory.CreateWebDriver(testConfiguration), id);
         }
     }
 }

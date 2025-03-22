@@ -5,41 +5,48 @@ using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels
 {
-    internal class BasePageObjectModel
+    abstract internal class BasePageObjectModel
     {
-        protected TestParticipant TestParticipant {  get; set; }
+        private const int DefaultTimeout = 20; 
+
+        protected TestParticipant TestParticipant { get; set; }
 
         public BasePageObjectModel(TestParticipant testParticipant)
-        { 
-            this.TestParticipant = testParticipant;
+        {
+            TestParticipant = testParticipant;
         }
 
-        protected void TypeIntoElement(string content, string xPath, int timeout = 6)
+        protected void TypeIntoElement(string content, string xPath, int timeout = DefaultTimeout)
         {
-            var element = ClickElement(xPath);
+            var element = WaitForElementToBeClickable(xPath, timeout);
             element.SendKeys(content);
         }
 
-        protected IWebElement ClickElement(string xPath, int timeout = 6)
+        protected IWebElement ClickElement(string xPath, int timeout = DefaultTimeout)
         {
-            var element = WaitForElementToBeDisplayed(xPath);
-            Wait(timeout).Until(ExpectedConditions.ElementToBeClickable(element));
+            var element = WaitForElementToBeClickable(xPath, timeout);
             element.Click();
-
             return element;
         }
 
-        protected IWebElement WaitForElementToBeDisplayed(string xPath, int timeout = 6)
+        protected IWebElement WaitForElementToBeClickable(string xPath, int timeout = DefaultTimeout)
         {
-            var element = Wait(timeout).Until(d => d.FindElement(By.XPath(xPath)));
-            Wait(timeout).Until(d => element.Displayed);
+            return Wait(timeout).Until(ExpectedConditions.ElementToBeClickable(By.XPath(xPath)));
+        }
 
-            return element;
+        protected IWebElement WaitForElementToBeDisplayed(string xPath, int timeout = DefaultTimeout)
+        {
+            return Wait(timeout).Until(d => d.FindElement(By.XPath(xPath)));
+        }
+
+        protected void WaitForElementToBeInvisible(string xPath, int timeout = DefaultTimeout)
+        {
+            Wait(timeout).Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(xPath)));
         }
 
         private WebDriverWait Wait(int timeout)
         {
-            return new WebDriverWait(this.TestParticipant.Driver, TimeSpan.FromSeconds(timeout));
+            return new WebDriverWait(TestParticipant.Driver, TimeSpan.FromSeconds(timeout));
         }
     }
 }

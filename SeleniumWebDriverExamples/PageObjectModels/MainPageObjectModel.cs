@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriverExamples.PageObjectModels.NavigationBar;
+﻿using OpenQA.Selenium;
+using SeleniumWebDriverExamples.PageObjectModels.NavigationBar;
 using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels
@@ -11,8 +12,8 @@ namespace SeleniumWebDriverExamples.PageObjectModels
         public MainPageObjectModel(TestParticipant testParticipant)
             : base(testParticipant)
         {
-            this.NavBarPageObjectModel = new NavBarPageObjectModel(this.TestParticipant);
-            this.CookiesPopupPageObjectModel = new CookiesPopupPageObjectModel(this.TestParticipant);
+            NavBarPageObjectModel = new NavBarPageObjectModel(TestParticipant);
+            CookiesPopupPageObjectModel = new CookiesPopupPageObjectModel(TestParticipant);
         }
     }
 }

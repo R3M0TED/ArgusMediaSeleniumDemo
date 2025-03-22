@@ -1,5 +1,5 @@
 ﻿{
-  "BrowserType": "Chrome",
-  "RunMaximised": true,
-  "Headless": false
+  "BrowserType": "Edge",
+  "Headless": true,
+  "SaveFailureScreenshots": true
 }

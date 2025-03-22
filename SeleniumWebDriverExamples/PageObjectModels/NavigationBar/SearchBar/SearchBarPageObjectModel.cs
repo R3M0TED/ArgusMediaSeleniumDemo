@@ -17,7 +17,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels.NavigationBar.SearchBar
             ClickElement(_searchBox);
             TypeIntoElement(content, _inputBox);
 
-            return new SearchResultsPopoverPageObjectModel(this.TestParticipant);
+            return new SearchResultsPopoverPageObjectModel(TestParticipant);
         }
     }
 }

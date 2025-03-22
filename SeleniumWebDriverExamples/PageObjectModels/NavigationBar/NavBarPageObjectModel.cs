@@ -11,14 +11,14 @@ namespace SeleniumWebDriverExamples.PageObjectModels.NavigationBar
         public NavBarPageObjectModel(TestParticipant testParticipant)
             : base(testParticipant)
         {
-            this.SearchBarPageObjectModel = new SearchBarPageObjectModel(this.TestParticipant);
+            SearchBarPageObjectModel = new SearchBarPageObjectModel(TestParticipant);
         }
 
         public CommoditiesPopoverPageObjectModel ClickCommodities()
         {
             ClickElement(_commoditiesButton);
 
-            return new CommoditiesPopoverPageObjectModel(this.TestParticipant);
+            return new CommoditiesPopoverPageObjectModel(TestParticipant);
         }
     }
 }

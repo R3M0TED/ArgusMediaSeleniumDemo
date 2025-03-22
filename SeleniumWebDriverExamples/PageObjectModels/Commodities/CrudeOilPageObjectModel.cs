@@ -11,7 +11,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels.Commodities
         {
         }
 
-        public void WaitForPageHeading()
+        public void WaitForPageHeadingToBeDisplayed()
         {
             WaitForElementToBeDisplayed(_crudeOilHeading);
         }

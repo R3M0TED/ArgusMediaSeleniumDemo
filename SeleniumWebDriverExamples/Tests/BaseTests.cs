@@ -2,7 +2,7 @@
 
 namespace SeleniumWebDriverExamples.Tests
 {
-    internal class BaseTests
+    abstract internal class BaseTests
     {
         public static void RunTest(Action<ITestStateProvider> testLogic)
         {

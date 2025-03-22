@@ -13,8 +13,8 @@
                 var subjectCommmoditiesPopover = subjectMainPage.NavBarPageObjectModel.ClickCommodities();
                 var witnessCommmoditiesPopover = witnessMainPage.NavBarPageObjectModel.ClickCommodities();
 
-                Assert.That(() => subjectCommmoditiesPopover.WaitForAllCommodities(), Throws.Nothing);
-                Assert.That(() => witnessCommmoditiesPopover.WaitForAllCommodities(), Throws.Nothing);
+                Assert.That(() => subjectCommmoditiesPopover.WaitForAllCommoditiesToBeDisplayed(), Throws.Nothing);
+                Assert.That(() => witnessCommmoditiesPopover.WaitForAllCommoditiesToBeDisplayed(), Throws.Nothing);
 
             });
         }

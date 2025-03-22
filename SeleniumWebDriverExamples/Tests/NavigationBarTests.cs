@@ -9,7 +9,7 @@
             {
                 var mainPage = sp.CreateTestParticipant();
                 var commmoditiesPopover = mainPage.NavBarPageObjectModel.ClickCommodities();
-                Assert.That(() => commmoditiesPopover.WaitForAllCommodities(), Throws.Nothing);
+                Assert.That(() => commmoditiesPopover.WaitForAllCommoditiesToBeDisplayed(), Throws.Nothing);
             });
         }
 
@@ -20,7 +20,7 @@
             {
                 var mainPage = sp.CreateTestParticipant();
                 var searchResultsPopover = mainPage.NavBarPageObjectModel.SearchBarPageObjectModel.Search("Oil");
-                Assert.That(() => searchResultsPopover.WaitForResults(), Throws.Nothing);
+                Assert.That(() => searchResultsPopover.WaitForSearchResults(), Throws.Nothing);
             });
         }
     }

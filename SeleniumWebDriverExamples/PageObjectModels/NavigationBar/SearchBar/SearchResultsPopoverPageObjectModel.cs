@@ -11,7 +11,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels.NavigationBar.SearchBar
         {
         }
 
-        public void WaitForResults()
+        public void WaitForSearchResults()
         {
             WaitForElementToBeDisplayed(_searchResult);
         }

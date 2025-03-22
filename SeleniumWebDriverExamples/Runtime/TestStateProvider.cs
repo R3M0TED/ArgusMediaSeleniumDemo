@@ -11,7 +11,7 @@ namespace SeleniumWebDriverExamples.Runtime
         public TestStateProvider(TestConfiguration testConfiguration)
         {
             _activeParticipants = new List<TestParticipant>();
-            this._testConfiguration = testConfiguration;
+            _testConfiguration = testConfiguration;
         }
 
         public MainPageObjectModel CreateTestParticipant()
@@ -28,7 +28,7 @@ namespace SeleniumWebDriverExamples.Runtime
 
         public IList<TestParticipant> GetActiveParticipants()
         {
-            return this._activeParticipants;
+            return _activeParticipants;
         }
 
         public void Dispose()

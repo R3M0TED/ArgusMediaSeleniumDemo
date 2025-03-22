@@ -10,7 +10,7 @@
                 var mainPage = sp.CreateTestParticipant();
                 var commmoditiesPopUp = mainPage.NavBarPageObjectModel.ClickCommodities();
                 var commoditiesOverviewPage = commmoditiesPopUp.ClickCommoditiesOverviewButton();
-                Assert.That(() => commoditiesOverviewPage.WaitForPageHeading(), Throws.Nothing);
+                Assert.That(() => commoditiesOverviewPage.WaitForPageHeadingToBeDisplayed(), Throws.Nothing);
             });
         }
 
@@ -22,7 +22,7 @@
                 var mainPage = sp.CreateTestParticipant();
                 var commmoditiesPopUp = mainPage.NavBarPageObjectModel.ClickCommodities();
                 var crudeOilPage = commmoditiesPopUp.ClickCommoditiesOverviewButton();
-                Assert.That(() => crudeOilPage.WaitForPageHeading(), Throws.Nothing);
+                Assert.That(() => crudeOilPage.WaitForPageHeadingToBeDisplayed(), Throws.Nothing);
             });
         }
     }

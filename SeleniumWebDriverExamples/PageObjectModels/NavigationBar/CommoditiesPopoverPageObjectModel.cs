@@ -41,17 +41,17 @@ namespace SeleniumWebDriverExamples.PageObjectModels.NavigationBar
         {
             ClickElement(_commoditiesOverviewButton);
 
-            return new CommoditiesOverviewPageObjectModel(this.TestParticipant);
+            return new CommoditiesOverviewPageObjectModel(TestParticipant);
         }
 
         public CrudeOilPageObjectModel ClickCrudeOilButton()
         {
             ClickElement(_crudeOilButton);
 
-            return new CrudeOilPageObjectModel(this.TestParticipant);
+            return new CrudeOilPageObjectModel(TestParticipant);
         }
 
-        public void WaitForAllCommodities()
+        public void WaitForAllCommoditiesToBeDisplayed()
         {
             foreach (var button in _allButtons)
             {

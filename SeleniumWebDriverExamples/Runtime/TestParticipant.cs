@@ -10,8 +10,8 @@ namespace SeleniumWebDriverExamples.Runtime
 
         public TestParticipant(IWebDriver driver, int id)
         {
-            this.Driver = driver;
-            this.Id = id;
+            Driver = driver;
+            Id = id;
         }
     }
 

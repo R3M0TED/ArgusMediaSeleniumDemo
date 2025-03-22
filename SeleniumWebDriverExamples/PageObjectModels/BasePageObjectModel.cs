@@ -5,7 +5,7 @@ using SeleniumWebDriverExamples.Runtime;
 
 namespace SeleniumWebDriverExamples.PageObjectModels
 {
-    internal class BasePageObjectModel
+    abstract internal class BasePageObjectModel
     {
         private const int DefaultTimeout = 20; 
 
@@ -13,7 +13,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels
 
         public BasePageObjectModel(TestParticipant testParticipant)
         {
-            this.TestParticipant = testParticipant;
+            TestParticipant = testParticipant;
         }
 
         protected void TypeIntoElement(string content, string xPath, int timeout = DefaultTimeout)
@@ -46,7 +46,7 @@ namespace SeleniumWebDriverExamples.PageObjectModels
 
         private WebDriverWait Wait(int timeout)
         {
-            return new WebDriverWait(this.TestParticipant.Driver, TimeSpan.FromSeconds(timeout));
+            return new WebDriverWait(TestParticipant.Driver, TimeSpan.FromSeconds(timeout));
         }
     }
 }
